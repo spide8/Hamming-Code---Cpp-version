@@ -1,0 +1,118 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "mount_file_id": "1trwhLf5VMzvg6EtMCWbyq4wMvylfogo3",
+      "authorship_tag": "ABX9TyMHkmpNcKBOFU3XJpEeWOkV",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/spide8/Hamming-Code---Cpp-version/blob/main/Algoritmo%20Hash\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "id": "jnIjSGAjOaN-"
+      },
+      "outputs": [],
+      "source": [
+        "import hashlib"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "https://www.linkedin.com/pulse/public-key-infrastructure-shishir-khandelwal"
+      ],
+      "metadata": {
+        "id": "GksDwJwhPPIX"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "path = r\"/content/drive/MyDrive/2023/2023-1/IoT 2023-1/Lab 4/Fotos/foto1.jpg\""
+      ],
+      "metadata": {
+        "id": "o2V_ldnGPSRY"
+      },
+      "execution_count": 7,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def Obtener_Hash(path, algoritmo):\n",
+        "  with open(path, \"rb\") as archivo:\n",
+        "    foto = archivo.read()\n",
+        "    hash_obj = hashlib.new(algoritmo)\n",
+        "    hash_obj.update(foto)\n",
+        "    resultado = hash_obj.hexdigest()\n",
+        "  return resultado"
+      ],
+      "metadata": {
+        "id": "WwEeq5_dP0RW"
+      },
+      "execution_count": 9,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#MD5\n",
+        "hash_md5 = Obtener_Hash(path, \"md5\")\n",
+        "print(\"MD5: \", hash_md5)\n",
+        "\n",
+        "#SHA-1\n",
+        "hash_sha1 = Obtener_Hash(path, \"sha1\")\n",
+        "print(\"SHA-1: \", hash_sha1)\n",
+        "\n",
+        "#SHA-256\n",
+        "hash_sha256 = Obtener_Hash(path, \"sha256\")\n",
+        "print(\"SHA-256: \", hash_sha256)\n",
+        "\n",
+        "hash_sha512 = Obtener_Hash(path, \"sha512\")\n",
+        "print(\"SHA-512: \", hash_sha512)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_HVZofgYQ1w-",
+        "outputId": "89d86ca8-3a4b-41ee-c150-67c7a1821a43"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "MD5:  34104d8765255827a367e8481569758d\n",
+            "SHA-1:  0ee3bcb684360427477dce7e7a4bbd70bc5a784a\n",
+            "SHA-256:  6fe683715ce4bc56188f054e86c98cee277cb65dbc48ef61ba74942c98068a9e\n",
+            "SHA-512:  3d7555d80f78b1940d781e2717c1d343a69e22286ec70e0fa0af68c78c0585bfc8c22fcc0b5556df5a71a080ff784eb9e88b80392a7fb6d0b671a2107b0fceee\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
